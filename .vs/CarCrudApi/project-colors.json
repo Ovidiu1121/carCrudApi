@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d131beff-47e6-4dd6-b67d-cbec4b756ec6": {
+      "ProjectGuid": "d131beff-47e6-4dd6-b67d-cbec4b756ec6",
+      "DisplayName": "CarCrudApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
