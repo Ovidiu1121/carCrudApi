@@ -19,7 +19,14 @@ namespace CarCrudApi.Cars.Repository
             _mapper = mapper;
         }
 
-        public async Task<Car> CreateCar(CreateCarRequest request)
+        public async Task<CarDto> GetByYearAsync(int fabrication_year)
+        {
+            var car = await _context.Cars.Where(c => c.Fabrication_year==fabrication_year).FirstOrDefaultAsync();
+            
+            return _mapper.Map<CarDto>(car);
+        }
+
+        public async Task<CarDto> CreateCar(CreateCarRequest request)
         {
             var car = _mapper.Map<Car>(request);
 
@@ -27,11 +34,11 @@ namespace CarCrudApi.Cars.Repository
 
             await _context.SaveChangesAsync();
 
-            return car;
+            return _mapper.Map<CarDto>(car);
 
         }
 
-        public async Task<Car> DeleteCarById(int id)
+        public async Task<CarDto> DeleteCarById(int id)
         {
             var car=await _context.Cars.FindAsync(id);
 
@@ -39,26 +46,51 @@ namespace CarCrudApi.Cars.Repository
 
             await _context.SaveChangesAsync();
 
-            return car;
+            return _mapper.Map<CarDto>(car);
 
         }
 
-        public async Task<IEnumerable<Car>> GetAllAsync()
+        public async Task<ListCarDto> GetAllAsync()
         {
-            return await _context.Cars.ToListAsync();
+            List<Car> result = await _context.Cars.ToListAsync();
+            
+            ListCarDto listCarDto = new ListCarDto()
+            {
+                carList = _mapper.Map<List<CarDto>>(result)
+            };
+
+            return listCarDto;
         }
 
-        public async Task<Car> GetByBrandAsync(string brand)
+        public async Task<CarDto> GetByBrandAsync(string brand)
         {
-            return await _context.Cars.FirstOrDefaultAsync(car => car.Brand.Equals(brand));
+            var car = await _context.Cars.Where(c => c.Brand.Equals(brand)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<CarDto>(car);
         }
 
-        public async Task<Car> GetByIdAsync(int id)
+        public async Task<CarDto> GetByIdAsync(int id)
         {
-           return await _context.Cars.FirstOrDefaultAsync(car => car.Id.Equals(id));
+            var car = await _context.Cars.Where(c => c.Id == id).FirstOrDefaultAsync();
+            
+            return _mapper.Map<CarDto>(car);
         }
 
-        public async Task<Car> UpdateCar(int id,UpdateCarRequest request)
+        public async Task<CarDto> GetByPriceAsync(int price)
+        {
+            var car = await _context.Cars.Where(c => c.Price == price).FirstOrDefaultAsync();
+            
+            return _mapper.Map<CarDto>(car);
+        }
+
+        public async Task<CarDto> GetByHorsePowerAsync(int horse_power)
+        {
+            var car = await _context.Cars.Where(c => c.Horse_power==horse_power).FirstOrDefaultAsync();
+            
+            return _mapper.Map<CarDto>(car);
+        }
+
+        public async Task<CarDto> UpdateCar(int id,UpdateCarRequest request)
         {
             var car = await _context.Cars.FindAsync(id);
 
@@ -71,7 +103,7 @@ namespace CarCrudApi.Cars.Repository
 
             await _context.SaveChangesAsync();
 
-            return car;
+            return _mapper.Map<CarDto>(car);
 
         }
     }

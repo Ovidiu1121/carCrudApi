@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CarCrudApi",
+    "\\CarCrudApi\\Cars",
+    "\\CarCrudApi\\Cars\\Repository",
+    "\\CarCrudApi\\Cars\\Repository\\interfaces",
+    "\\CarCrudApi\\Cars\\Service"
+  ],
+  "SelectedNode": "\\CarCrudApi\\Cars\\Repository\\interfaces\\ICarRepository.cs",
+  "PreviewInSolutionExplorer": false
+}

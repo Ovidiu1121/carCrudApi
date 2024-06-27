@@ -12,17 +12,150 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:7164/car/api/v1/all",
+					"raw": "https://localhost:7164/api/v1/Car/all",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "7164",
 					"path": [
-						"car",
 						"api",
 						"v1",
+						"Car",
 						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByBrand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7164/api/v1/Car/Acura",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"api",
+						"v1",
+						"Car",
+						"Acura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7164/id?id=4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POSTcreateCar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"brand\": \"dacia\",\r\n  \"price\": 1000,\r\n  \"horse_power\": 999,\r\n  \"fabrication_year\": 1990\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7164/api/v1/Car/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"api",
+						"v1",
+						"Car",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUTupdateCar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\":\"brandnou\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7164/api/v1/Car/update/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"api",
+						"v1",
+						"Car",
+						"update",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7164/api/v1/Car/delete/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"api",
+						"v1",
+						"Car",
+						"delete",
+						"13"
 					]
 				}
 			},
